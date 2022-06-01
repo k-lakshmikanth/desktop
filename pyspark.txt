@@ -1,0 +1,32 @@
+IMPORTED FROM SparkSession
+.withColumn('>Col name<',operation for Col)---->to add column
+.drop('>Col_name<')---->single Col name or list of colname
+.withColumnRenamed('old name','new name')---->to rename column
+
+
+.na
+       .drop(how=x,thresh=<int>,subset=['Col_name'])----->x can be 'any' or 'all'
+                                    'any'> if a row contains atleast 1 (null) that row will be deleted
+	                'all'->if a row contains  all (null) cells then that row will be deleted
+	                thresh----->this tells there should be atleast <int> no. of non null values
+	                subset----->this checks in specific cloumn
+        .fill("char")---->is used to fill null cells with 'char'
+
+
+.select(['col_name'])------>is used to select specified columns like "select" clause in sql
+.filter("condition")------>is used to filter rows like "where" clause in sql
+ ____________________________________________________________________________________________________________
+|from pyspark.sql.functions import concat                                                                                                   |
+|select(concat(df.col1,df.col2).alias('_'))                                                                                                         |
+|___________________________________________________________________________________________________________|
+.dtypes--------->is used to get "describe table_name" query from sql
+.groupby("Col_name")--------->is used to group data for aggregate functions like
+                                         .sum()
+                                         .mean()
+                                         .min()
+		 .max()
+		 .count()
+.orderBy(){or}.sort()------------>is used to arrange data in order
+		"Colname".asc()
+			.desc()
+df.agg({'col_name':sum('col_name')}).show()--------->this show us total amount of col_name in df
